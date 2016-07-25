@@ -1,2 +1,14 @@
 # resilienceServer
-Server de datos de las métricas de resiliencia
+Server with resilience metrics data.
+
+## Installation
+
+```
+
+```
+
+## Running
+
+```
+
+```
