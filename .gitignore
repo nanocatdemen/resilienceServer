@@ -1,2 +1,5 @@
 *.pyc
 /venv
+server/resilience_metrics/migrations
+*/__pycache__
+*.sqlite3
