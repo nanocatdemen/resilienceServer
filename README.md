@@ -9,6 +9,7 @@ Assuming that you have python 3.4.X, pip3 and virtualenv, clone the repository. 
 $ virtualenv -p python3 venv
 $ . venv/bin/activate
 (venv) $ pip install -r requirements.txt
+(venv) $ cd server
 (venv) $ python manage.py migrate (?)
 (venv) $ python manage.py makemigrations
 ```
@@ -17,5 +18,6 @@ $ . venv/bin/activate
 
 ```
 $ . venv/bin/activate
+(venv) $ cd server
 (venv) $ python manage.py runserver
 ```
