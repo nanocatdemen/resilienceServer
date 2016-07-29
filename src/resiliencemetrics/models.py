@@ -15,4 +15,4 @@ class Paper(models.Model):
     # additional_comments
 
     def __str__(self):
-        return self.doi
+        return self.title
