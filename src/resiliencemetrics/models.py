@@ -13,3 +13,6 @@ class Paper(models.Model):
     # times_cited
     # experiment
     # additional_comments
+
+    def __str__(self):
+        return self.doi
