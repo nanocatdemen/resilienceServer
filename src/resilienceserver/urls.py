@@ -17,5 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 
 urlpatterns = [
+    #Function view
+    url(r'^$', 'resiliencemetrics.views.home', name='home'),
     url(r'^admin/', admin.site.urls),
 ]
