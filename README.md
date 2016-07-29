@@ -10,8 +10,8 @@ $ virtualenv -p python3 venv
 $ . venv/bin/activate
 (venv) $ pip install -r requirements.txt
 (venv) $ cd server
-(venv) $ python manage.py migrate (?)
 (venv) $ python manage.py makemigrations
+(venv) $ python manage.py migrate
 ```
 
 ## Running
