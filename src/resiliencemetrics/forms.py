@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Paper
+from papers.models import Paper
 
 
 class PaperForm(forms.ModelForm):
