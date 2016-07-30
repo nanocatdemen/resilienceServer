@@ -13,17 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
+
 urlpatterns = [
-    # Function view.
-    # Se queja porque es string
-    # /home/fernando/resilienceServer/src/resilienceserver/urls.py:21:
-    # RemovedInDjango110Warning: Support for string view arguments to url() is
-    # deprecated and will be removed in Django 1.10 (got
-    # resiliencemetrics.views.home). Pass the callable instead.
-    # url(r'^$', 'resiliencemetrics.views.home', name='home'),
-    url(r'^$', 'resiliencemetrics.views.home', name='home'),
     url(r'^admin/', admin.site.urls),
+    url(r'', include('resiliencemetrics.urls'))
 ]

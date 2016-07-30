@@ -15,7 +15,5 @@ def home(request):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
-        context = {
-            'title': 'yay'
-        }
+
     return render(request, 'home.html', context)

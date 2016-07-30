@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
+{% load bootstrap3 %}
 
 {% block head_title %}Home | {{ block.super }}{% endblock %}
 
 {% block content %}
 <h1>{{ title }}</h1>
-<form method='POST' action=''>{% csrf_token %}
-  {{ form.as_p }}
-  <input type='submit' value='addPaper' />
-</form>
+
+<form action='' method='POST' class='form'>
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button type='submit' class='addPaper'>
+      {% bootstrap_icon 'star' %} Submit
+    </button>
+  {% endbuttons %}
 {% endblock %}
