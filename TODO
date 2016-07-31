@@ -1,0 +1,5 @@
+Usar postgres
+Autocomplete parap buscar papers en metricas
+  http://stackoverflow.com/questions/9793707/django-admin-change-selected-box-of-related-fields-to-autocomplete
+Do dis para buscar autores (alternative)
+  http://stackoverflow.com/questions/1226760/filter-manytomany-box-in-django-admin

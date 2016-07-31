@@ -1,6 +1,18 @@
 from django.db import models
 
 
+class Author(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+class Topic(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
 class Paper(models.Model):
     """
     Science article.
@@ -11,23 +23,11 @@ class Paper(models.Model):
     abstract = models.CharField(max_length=200)
     times_cited = models.IntegerField()  # (google scholar index)
     source = models.ForeignKey('Source', blank=True, null=True)
+    authors = models.ManyToManyField(Author)  # do dis pls: http://stackoverflow.com/questions/1226760/filter-manytomany-box-in-django-admin
+    topics = models.ManyToManyField(Topic)
 
     def __str__(self):
         return self.title
-
-class Topic(models.Model):
-    name = models.CharField(max_length=200)
-
-class PaperHasTopic(models.Model):
-    paper = models.ForeignKey('Paper', on_delete=models.CASCADE)
-    topic = models.ForeignKey('Topic', on_delete=models.CASCADE)
-
-class Author(models.Model):
-    name = models.CharField(max_length=200)
-
-class PaperHasAuthor(models.Model):
-    paper = models.ForeignKey('Paper', on_delete=models.CASCADE)
-    author = models.ForeignKey('Author', on_delete=models.CASCADE)
 
 class Source(models.Model):
     """

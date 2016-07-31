@@ -1,4 +1,3 @@
 *.pyc
 /venv
 *.sqlite3
-/src/static
