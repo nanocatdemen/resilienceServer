@@ -23,7 +23,7 @@ class Paper(models.Model):
     abstract = models.CharField(max_length=200)
     times_cited = models.IntegerField()  # (google scholar index)
     source = models.ForeignKey('Source', blank=True, null=True)
-    authors = models.ManyToManyField(Author)  # do dis pls: http://stackoverflow.com/questions/1226760/filter-manytomany-box-in-django-admin
+    authors = models.ManyToManyField(Author)
     topics = models.ManyToManyField(Topic)
 
     def __str__(self):
