@@ -5,19 +5,19 @@ from django import forms
 from .models import *
 
 class AuthorAdmin(admin.ModelAdmin):
-    search_fields = ['name']
+    search_fields = ['^name',]
 
 class AuthorInline(admin.TabularInline):
     model = Paper.authors.through
-    search_fields = ['name',]
+    min_num = 1
 
-class TopicInline(admin.TabularInline):
-    model = Paper.topics.through
+# class TopicInline(admin.TabularInline):
+#     model = Paper.topics.through
 
 class PaperAdmin(admin.ModelAdmin):
-    inlines = (AuthorInline, TopicInline)
-    search_fields = ['title',]
-    exclude = ('authors', 'topics')
+    inlines = (AuthorInline,)
+    search_fields = ['^title',]
+    exclude = ('authors',)
     class Media:
         js = (
             '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', # jquery
@@ -31,6 +31,6 @@ class PaperAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Paper, PaperAdmin)
-admin.site.register(Topic)
+# admin.site.register(Topic)
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Source)

@@ -7,11 +7,11 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
-class Topic(models.Model):
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
+# class Topic(models.Model):
+#     name = models.CharField(max_length=200)
+#
+#     def __str__(self):
+#         return self.name
 
 class Paper(models.Model):
     """
@@ -24,7 +24,7 @@ class Paper(models.Model):
     times_cited = models.IntegerField()  # (google scholar index)
     source = models.ForeignKey('Source', blank=True, null=True)
     authors = models.ManyToManyField(Author)
-    topics = models.ManyToManyField(Topic)
+    # topics = models.ManyToManyField(Topic)
 
     def __str__(self):
         return self.title
