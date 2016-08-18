@@ -15,7 +15,7 @@ class ExperimentAdmin(admin.ModelAdmin):
         js = (
             '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', # jquery
             '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
-            'js/paper_has_metric_select2.js',       # project static folder
+            'js/select2_hack.js',       # project static folder
             #'app/js/myscript.js',   # app static folder
         )
         css = {

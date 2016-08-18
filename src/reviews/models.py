@@ -8,5 +8,8 @@ class QualityStudy(models.Model):
     topic_described = models.FloatField()
     metric_described = models.FloatField()
     results_complete = models.FloatField()
-    additional_comments = models.CharField(max_length=200)
+    additional_comments = models.TextField(blank=True)
     paper = models.OneToOneField('papers.Paper', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.paper.title
