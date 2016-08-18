@@ -16,7 +16,7 @@ class AuthorInline(admin.TabularInline):
 
 class PaperAdmin(admin.ModelAdmin):
     inlines = (AuthorInline,)
-    search_fields = ['^title',]
+    search_fields = ['^title', 'authors__name']
     exclude = ('authors',)
     class Media:
         js = (
