@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from .forms import PaperForm
-
+from papers.models import Paper
 
 def home(request):
     title = 'Welcome'
@@ -17,3 +17,7 @@ def home(request):
         instance.save()
 
     return render(request, 'home.html', context)
+
+def list_papers(request):
+    papers = Paper.objects.all()
+    return render(request, 'list_papers.html', locals())
