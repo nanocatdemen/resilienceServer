@@ -2,12 +2,21 @@ from django.contrib import admin
 from .models import *
 
 class PaperHasMetricInline(admin.TabularInline):
-    model = PaperHasMetric
+    model = Metric.cited_in.through
+    extra = 1 # how many rows to show
+
+class PaperApplicationInline(admin.TabularInline):
+    model = Metric.application.through
+    extra = 1 # how many rows to show
+
+class PaperMetricTypeInline(admin.TabularInline):
+    model = Metric.metric_type.through
     extra = 1 # how many rows to show
 
 class MetricClassAdmin(admin.ModelAdmin):
-    inlines = (PaperHasMetricInline,)
+    inlines = (PaperHasMetricInline, PaperApplicationInline, PaperMetricTypeInline,)
     search_fields = ['title',]
+    exclude = ('cited_in', 'application', 'metric_type',)
     class Media:
         js = (
             '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', # jquery
