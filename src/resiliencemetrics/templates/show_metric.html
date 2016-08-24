@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    {% load bootstrap3 %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    {% bootstrap_css %}
+
+    <title>{{ metric }}</title>
+</head>
+
+<body>
+
+<h1>{{ metric }}</h1>
+<ul>
+    <li>Definition: {{ metric.definition }}</li>
+    <li>Interpretation: {{ metric.interpretation }}</li>
+    <li>Types: {% for type in metric.metric_type.all %}{{ type }} {% endfor %}</li>
+    <li>Times Cited: {{ metric.cited_in.all.count }}</li>
+    <li>Proposed in: {% if metric.proposed_in %}<a href="/papers/{{ metric.proposed_in.id }}">{{ metric.proposed_in }}</a>{% endif %}</li>
+</ul>
+{% bootstrap_javascript %}
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $("#metrics_table").dataTable();
+    });
+</script>
+
+</body>
+</html>

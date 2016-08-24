@@ -6,12 +6,9 @@
 {% block content %}
 <h1>{{ title }}</h1>
 
-<form action='' method='POST' class='form'>
-  {% csrf_token %}
-  {% bootstrap_form form %}
-  {% buttons %}
-    <button type='submit' class='addPaper'>
-      {% bootstrap_icon 'star' %} Submit
-    </button>
-  {% endbuttons %}
+List of:<br>
+
+<a href="/papers" >Papers</a> <br>
+<a href="/metrics" >Metrics</a>
+
 {% endblock %}

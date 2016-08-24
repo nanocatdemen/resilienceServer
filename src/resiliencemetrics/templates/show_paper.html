@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    {% load bootstrap3 %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    {% bootstrap_css %}
+
+    <title>{{ paper }}</title>
+</head>
+
+<body>
+
+<h1>{{ paper }}</h1>
+<ul>
+    <li>DOI: {{ paper.doi }}</li>
+    <li>Authors: {% for author in paper.authors.all %}{{ author }} {% endfor %}</li>
+    <li>Abstract: {{ paper.abstract }}</li>
+    <li>Year: {{ paper.publication_year }}</li>
+</ul>
+{% bootstrap_javascript %}
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $("#metrics_table").dataTable();
+    });
+</script>
+
+</body>
+</html>

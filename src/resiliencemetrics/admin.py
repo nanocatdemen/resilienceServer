@@ -15,7 +15,7 @@ class PaperMetricTypeInline(admin.TabularInline):
 
 class MetricClassAdmin(admin.ModelAdmin):
     inlines = (PaperHasMetricInline, PaperApplicationInline, PaperMetricTypeInline,)
-    search_fields = ['title',]
+    search_fields = ['name',]
     exclude = ('cited_in', 'application', 'metric_type',)
     class Media:
         js = (

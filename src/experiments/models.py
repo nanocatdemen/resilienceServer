@@ -8,6 +8,9 @@ class NetworkModel(models.Model):
     """
     name = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.name
+
 class Experiment(models.Model):
     """
     Experiment done in the article

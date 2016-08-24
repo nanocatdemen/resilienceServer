@@ -26,3 +26,11 @@ def list_papers(request):
 def list_metrics(request):
     metrics = Metric.objects.all()
     return render(request, 'list_metrics.html', locals())
+
+def show_metric(request, id=None):
+    metric = Metric.objects.get(id=id)
+    return render(request, 'show_metric.html', locals())
+
+def show_paper(request, id=None):
+    paper = Paper.objects.get(id=id)
+    return render(request, 'show_paper.html', locals())

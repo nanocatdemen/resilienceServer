@@ -8,7 +8,7 @@
 
     {% bootstrap_css %}
 
-    <title>Holiwi</title>
+    <title>Papers</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
         <!-- papers se define en la vista! -->
         {% for paper in papers %}
             <tr>
-                <td>{{ paper }}</td>
+                <td><a href="/papers/{{ paper.id }}">{{ paper }}</a></td>
                 <td>{{ paper.doi }}</td>
                 <td>{{ paper.publication_year }}</td>
             </tr>

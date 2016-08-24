@@ -8,7 +8,7 @@
 
     {% bootstrap_css %}
 
-    <title>Holiwi</title>
+    <title>Metrics</title>
 </head>
 
 <body>
@@ -18,18 +18,20 @@
         <tr>
             <!-- aqui van los atributos que quieres -->
             <th>Name</th>
-            <th>Definition</th>
+            <th>Type</th>
+            <th>Application</th>
             <th>Cite count</th>
-            <th>Related Paper</th>
+            <th>Proposed in</th>
         </tr>
     </thead>
         <!-- papers se define en la vista! -->
         {% for metric in metrics %}
             <tr>
-                <td>{{ metric }}</td>
-                <td>{{ metric.definition }}</td>
+                <td><a href="/metrics/{{ metric.id }}">{{ metric }}</a></td>
+                <td>{% for type in metric.metric_type.all %}{{ type }} {% endfor %}</td>
+                <td>{% for application in metric.application.all %}{{ application }} {% endfor %}</td>
                 <td>{{ metric.cited_in.all.count }}</td>
-                <td>{{ metric.proposed_in }}</td>
+                <td><a href="/papers/{{ metric.proposed_in.id }}">{% if metric.proposed_in %}{{ metric.proposed_in }}{% endif %}</td>
             </tr>
         {% endfor %}
     <tbody>
