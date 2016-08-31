@@ -12,7 +12,6 @@ $ . venv/bin/activate
 (venv) $ cd src
 (venv) $ python manage.py makemigrations
 (venv) $ python manage.py migrate
-(venv) $ python manage.py collectstatic
 ```
 
 ## Running
