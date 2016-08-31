@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    {% load bootstrap3 %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    {% bootstrap_css %}
+
+    <title>Metrics Viz</title>
+</head>
+
+<body>
+
+{% bootstrap_javascript %}
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+
+<script type="text/javascript">
+    var data = [ {% for metric in metrics %} { id: '{{ metric.id }}', name:'{{ metric }}', cited:({{ metric.cited_in.all.count }} + 1) }, {% endfor %} ]
+
+    data = data.map(function(d){ d.value = +d["cited"]; return d; });
+
+    var diameter = 1000, //max size of the bubbles
+        color    = d3.scale.category20b(); //color category
+
+    var bubble = d3.layout.pack()
+        .sort(null)
+        .size([diameter, diameter])
+        .padding(1.5);
+
+    var nodes = bubble.nodes({children:data}).filter(function(d) { return !d.children; });
+
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", diameter)
+        .attr("height", diameter)
+        .attr("class", "bubble");
+
+    var bubbles = svg.append("g")
+        .attr("transform", "translate(0,0)")
+        .selectAll(".bubble")
+        .data(nodes)
+        .enter();
+
+    bubbles.append("circle")
+        .attr("r", function(d){ return d.r; })
+        .attr("cx", function(d){ return d.x; })
+        .attr("cy", function(d){ return d.y; })
+        .style("fill", function(d) { return color(d.value); });
+
+    bubbles.append("text")
+        .attr("x", function(d){ return d.x; })
+        .attr("y", function(d){ return d.y + 5; })
+        .attr("text-anchor", "middle")
+        .append("a")
+            .attr("xlink:href", function(d){ return "/metrics/" + d.id })
+            .text(function(d){ return d["name"].substring(0, d.r / 3); })
+        .style({
+            "fill":"white",
+            "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
+            "font-size": "12px"
+        });
+
+
+</script>
+
+</body>
+</html>

@@ -34,3 +34,7 @@ def show_metric(request, id=None):
 def show_paper(request, id=None):
     paper = Paper.objects.get(id=id)
     return render(request, 'show_paper.html', locals())
+
+def viz_metrics(request):
+    metrics = Metric.objects.all()
+    return render(request, 'viz.html', locals())
