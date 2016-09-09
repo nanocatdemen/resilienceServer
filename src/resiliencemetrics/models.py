@@ -14,6 +14,10 @@ class Metric(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('metric_detail', kwargs={ 'id': self.id})
+
 class Application(models.Model):
     name = models.CharField(max_length=200)
 

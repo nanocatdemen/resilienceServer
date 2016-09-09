@@ -25,7 +25,7 @@
         <!-- papers se define en la vista! -->
         {% for paper in papers %}
             <tr>
-                <td><a href="/papers/{{ paper.id }}">{{ paper }}</a></td>
+                <td><a href='{{ paper.get_absolute_url }}'>{{ paper }}</a></td>
                 <td>{{ paper.doi }}</td>
                 <td>{{ paper.publication_year }}</td>
             </tr>

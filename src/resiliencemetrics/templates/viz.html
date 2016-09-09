@@ -19,7 +19,7 @@
 <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
 
 <script type="text/javascript">
-    var data = [ {% for metric in metrics %} { id: '{{ metric.id }}', name:'{{ metric }}', cited:({{ metric.cited_in.all.count }} + 1) }, {% endfor %} ]
+    var data = [ {% for metric in metrics %} { id: '{{ metric.id }}', name:'{{ metric }}', cited:({{ metric.cited_in.all.count }} + 1), url:'{{ metric.get_absolute_url }}' }, {% endfor %} ]
 
     data = data.map(function(d){ d.value = +d["cited"]; return d; });
 
@@ -56,7 +56,7 @@
         .attr("y", function(d){ return d.y + 5; })
         .attr("text-anchor", "middle")
         .append("a")
-            .attr("xlink:href", function(d){ return "/metrics/" + d.id })
+            .attr("xlink:href", function(d){ console.log(d); return d.url })
             .text(function(d){ return d["name"].substring(0, d.r / 3); })
         .style({
             "fill":"white",

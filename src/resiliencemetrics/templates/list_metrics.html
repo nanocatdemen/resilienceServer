@@ -27,11 +27,11 @@
         <!-- papers se define en la vista! -->
         {% for metric in metrics %}
             <tr>
-                <td><a href="/metrics/{{ metric.id }}">{{ metric }}</a></td>
+                <td><a href='{{ metric.get_absolute_url }}'>{{ metric }}</a></td>
                 <td>{% for type in metric.metric_type.all %}{{ type }} {% endfor %}</td>
                 <td>{% for application in metric.application.all %}{{ application }} {% endfor %}</td>
                 <td>{{ metric.cited_in.all.count }}</td>
-                <td><a href="/papers/{{ metric.proposed_in.id }}">{% if metric.proposed_in %}{{ metric.proposed_in }}{% endif %}</td>
+                <td><a href='{{ metric.proposed_in.get_absolute_url }}'>{% if metric.proposed_in %}{{ metric.proposed_in }}{% endif %}</td>
             </tr>
         {% endfor %}
     <tbody>

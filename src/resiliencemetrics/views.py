@@ -27,13 +27,13 @@ def list_metrics(request):
     metrics = Metric.objects.all()
     return render(request, 'list_metrics.html', locals())
 
-def show_metric(request, id=None):
-    metric = Metric.objects.get(id=id)
-    return render(request, 'show_metric.html', locals())
-
-def show_paper(request, id=None):
+def paper_detail(request, id=None):
     paper = Paper.objects.get(id=id)
-    return render(request, 'show_paper.html', locals())
+    return render(request, 'paper_detail.html', locals())
+
+def metric_detail(request, id=None):
+    metric = Metric.objects.get(id=id)
+    return render(request, 'metric_detail.html', locals())
 
 def viz_metrics(request):
     metrics = Metric.objects.all()

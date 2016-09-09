@@ -1,11 +1,20 @@
 from django.conf.urls import url
-from . import views
+# from . import views
+
+from .views import (
+    home,
+    list_papers,
+    list_metrics,
+    paper_detail,
+    metric_detail,
+    viz_metrics,
+    )
 
 urlpatterns = [
-    url(r'^viz$', views.viz_metrics, name='viz_metrics'),
-    url(r'^metrics/(?P<id>\w{0,50})$', views.show_metric, name='show_metric'),
-    url(r'^metrics$', views.list_metrics, name='list_metrics'),
-    url(r'^papers/(?P<id>\w{0,50})$', views.show_paper, name='show_paper'),
-    url(r'^papers$', views.list_papers, name='list_papers'),
-    url(r'^$', views.home, name='home')
+    url(r'^$', home),
+    url(r'^metrics/(?P<id>\d+)/$', metric_detail, name='metric_detail'),
+    url(r'^metrics/$', list_metrics),
+    url(r'^papers/(?P<id>\d+)/$', paper_detail, name='paper_detail'),
+    url(r'^papers/$', list_papers),
+    url(r'^viz/$', viz_metrics),
 ]
